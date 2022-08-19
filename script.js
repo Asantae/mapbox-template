@@ -9,17 +9,19 @@ navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
     enableHighAccuracy: true
 })
 
+//on successfully attaining longitude and latitude this function will show your current position
 function successLocation(postition){
     console.log(location)
     setupMap([postition.coords.longitude, postition.coords.latitude])
 }
 
+//if your position cannot be found then this will create a position and show it on the map
 function errorLocation() {
-    setupMap()
+    setupMap([-34, 58])
 }
 
 function setupMap(center){
-
+    //this is what created the map
     const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
